@@ -17,7 +17,7 @@ generateBtnEl.addEventListener("click", function () {
   if (lengthOfPassword()) {
     populateChars();
     generatePassword();
-    colorChange(passwordEl, "lightBlue", password);
+    alertUser(passwordEl, "lightBlue", password);
   }
 
   clear();
@@ -52,10 +52,10 @@ function populateChars() {
 // validates length of password input and return it
 function lengthOfPassword() {
   if (!passwordLengthEl.value) {
-    colorChange(passwordEl, "red", "Enter Password Lenght!");
+    alertUser(passwordEl, "red", "Enter Password Lenght!");
     return;
   } else if (passwordLengthEl.value < 8 || passwordLengthEl.value > 12) {
-    colorChange(passwordEl, "red", "Enter Required Lenght!");
+    alertUser(passwordEl, "red", "Enter Required Lenght!");
     return;
   } else {
     // reset old password before generating a new one
@@ -73,7 +73,7 @@ function clear() {
 }
 
 // change alert warning color to red
-function colorChange(element, textColour, message) {
+function alertUser(element, textColour, message) {
   return (element.style.color = textColour, element.textContent = message);
 }
 
@@ -82,14 +82,14 @@ copyEl.addEventListener('click', () => {
   if (passwordEl.textContent) {
     copyPassword(passwordEl.textContent)
   } else {
-    colorChange(passwordEl, 'red', 'no text to copy!');  
+    alertUser(passwordEl, 'red', 'no text to copy!');  
   }
 })
 
 function copyPassword(textToCopy) {
   navigator.clipboard.writeText(textToCopy).then(() => {
-    colorChange(passwordEl, 'lightBlue', 'Password Copied')
+    alertUser(passwordEl, 'lightBlue', 'Password Copied')
   }).catch(err => {
-    colorChange(passwordEl, 'red', 'failed to copy')    
+    alertUser(passwordEl, 'red', 'failed to copy')    
   });
 }

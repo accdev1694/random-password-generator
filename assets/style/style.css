@@ -12,7 +12,7 @@ html {
 }
 
 p {
-  color: rgb(35, 10, 35);
+  color: rgb(84, 44, 84);
   margin-bottom: 30px;
 }
 
@@ -76,17 +76,17 @@ button {
   background: none;
   color: white;
   font-weight: bold;
-  border: rgb(35, 10, 35) solid 1px;
+  border: rgb(84, 44, 84) solid 1px;
   border-radius: 5px;
 }
 
 button:hover {
-  background: linear-gradient(rgb(17, 17, 17), rgb(35, 10, 35));
+  background: linear-gradient(rgb(17, 17, 17), rgb(84, 44, 84));
   border: none;
 }
 
 button:active {
-  background: linear-gradient(rgb(139, 139, 139), rgb(99, 29, 99));
+  background: linear-gradient(rgb(139, 139, 139), rgb(84, 44, 84));
   border: none;
 }
 #length {

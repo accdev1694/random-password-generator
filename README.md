@@ -105,8 +105,13 @@ generateBtnEl.addEventListener("click", function () {
 - Improved Error Handling: Provide more detailed feedback if the user fails to meet input criteria.
 - Strength Indicator: Show a visual indication of the strength of the generated password.
 - Persistent Options: Allow the app to remember user selections between sessions.
+- make site responsive
 
 ## License
 This project is open source and available under the MIT License. 
 
 ## Repository
+https://github.com/accdev1694/random-password-generator
+
+## Deployed Site
+https://passgenandcopyapp.netlify.app/
