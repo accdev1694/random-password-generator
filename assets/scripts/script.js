@@ -16,7 +16,7 @@ generateBtnEl.addEventListener("click", function () {
   if (lengthOfPassword()) {
     populateChars();
     generatePassword();
-    alertWarning(passwordEl, 'lightBlue')
+    colorChange(passwordEl, 'lightBlue')
     passwordEl.textContent = password;
   }
 
@@ -52,11 +52,13 @@ function populateChars() {
 // validates length of password input and return it
 function lengthOfPassword() {
   if (!passwordLengthEl.value) {
-    alertWarning(passwordEl, 'red');
+    colorChange(passwordEl, 'red');
     passwordEl.textContent = "Enter Password Lenght!";
+    return;
   } else if (passwordLengthEl.value < 8 || passwordLengthEl.value > 12) {
-    alertWarning(passwordEl, 'red');
+    colorChange(passwordEl, 'red');
     passwordEl.textContent = "Enter Required Lenght!";
+    return;
   } else {
     // reset old password before generating a new one
     passwordEl.textContent = "";
@@ -73,6 +75,6 @@ function clear() {
 }
 
 // change alert warning color to red
-function alertWarning(element, textColour) {
+function colorChange(element, textColour) {
   return (element.style.color = textColour);
 }
