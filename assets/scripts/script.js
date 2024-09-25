@@ -6,12 +6,45 @@ let generateBtnEl = document.querySelector("#generate");
 let passwordEl = document.querySelector("#password");
 
 let allCharacters = "";
+let password = ""
+// take action upon clicking the generate password button
 generateBtnEl.addEventListener("click", function () {
-  const passwordLength = lengthOfPassword();
+  populateChars();
+  generatePassword();
   clear();
-  console.log(typeof passwordLength);
+  
+
+  allCharacters = "";
+  password = ''
 });
 
+function generatePassword() {
+    let x = lengthOfPassword()
+    while (x > 0) {
+    let i = Math.floor(Math.random() * allCharacters.length)
+    password += allCharacters[i]
+    x -= 1
+    }
+    
+}
+
+// add to list of password characters based on user requirements
+function populateChars() {
+  if (lengthOfPassword()) {
+    allCharacters += "abcdefghijklmnopqrstuvwxyz";
+    if (upperCasesEl.checked === true) {
+      allCharacters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
+    if (numbersEl.checked === true) {
+      allCharacters += "1234567890";
+    }
+    if (specialCharEl.checked === true) {
+      allCharacters += '!@#$%^&*()_+-=[]{}|;:",.<>?/`~';
+    }
+  }
+}
+
+// validates length of password input and return it
 function lengthOfPassword() {
   if (!passwordLengthEl.value) {
     alertWarning(passwordEl);
@@ -31,8 +64,9 @@ function clear() {
   passwordLengthEl.value = "";
   upperCasesEl.checked = false;
   numbersEl.checked = false;
-  specialCharEl.check = false;
+  specialCharEl.checked = false;
 }
+
 // change alert warning color to red
 function alertWarning(element) {
   return (element.style.color = "red");
