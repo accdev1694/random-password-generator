@@ -1,13 +1,14 @@
-let passwordLengthEl = document.querySelector("#length");
-let upperCasesEl = document.querySelector("#upper");
-let numbersEl = document.querySelector("#numbers");
-let specialCharEl = document.querySelector("#special");
-let generateBtnEl = document.querySelector("#generate");
-let passwordEl = document.querySelector("#password");
-let lower = "abcdefghijklmnopqrstuvwxyz";
-let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let nums = "1234567890";
-let specials = '!@#$%^&*()_+-=[]{}|;:",.<>?/`~';
+const passwordLengthEl = document.querySelector("#length");
+const upperCasesEl = document.querySelector("#upper");
+const numbersEl = document.querySelector("#numbers");
+const specialCharEl = document.querySelector("#special");
+const generateBtnEl = document.querySelector("#generate");
+const passwordEl = document.querySelector("#password");
+const lower = "abcdefghijklmnopqrstuvwxyz";
+const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const nums = "1234567890";
+const specials = '!@#$%^&*()_+-=[]{}|;:",.<>?/`~';
+const copyEl = document.querySelector('#copy');
 
 let allCharacters = "";
 let password = "";
@@ -16,7 +17,7 @@ generateBtnEl.addEventListener("click", function () {
   if (lengthOfPassword()) {
     populateChars();
     generatePassword();
-    colorChange(passwordEl, 'lightBlue')
+    colorChange(passwordEl, "lightBlue");
     passwordEl.textContent = password;
   }
 
@@ -27,11 +28,11 @@ generateBtnEl.addEventListener("click", function () {
 });
 
 function generatePassword() {
-  let x = lengthOfPassword();
-  while (x > 0) {
-    let i = Math.floor(Math.random() * allCharacters.length);
-    password += allCharacters[i];
-    x -= 1;
+  let len = lengthOfPassword();
+  while (len > 0) {
+    let randomIntegers = Math.floor(Math.random() * allCharacters.length);
+    password += allCharacters[randomIntegers];
+    len -= 1;
   }
 }
 
@@ -52,12 +53,10 @@ function populateChars() {
 // validates length of password input and return it
 function lengthOfPassword() {
   if (!passwordLengthEl.value) {
-    colorChange(passwordEl, 'red');
-    passwordEl.textContent = "Enter Password Lenght!";
+    colorChange(passwordEl, "red", "Enter Password Lenght!");
     return;
   } else if (passwordLengthEl.value < 8 || passwordLengthEl.value > 12) {
-    colorChange(passwordEl, 'red');
-    passwordEl.textContent = "Enter Required Lenght!";
+    colorChange(passwordEl, "red", "Enter Required Lenght!");
     return;
   } else {
     // reset old password before generating a new one
@@ -75,6 +74,23 @@ function clear() {
 }
 
 // change alert warning color to red
-function colorChange(element, textColour) {
-  return (element.style.color = textColour);
+function colorChange(element, textColour, message) {
+  return (element.style.color = textColour, element.textContent = message);
+}
+
+// copy generated password to clipboard
+copyEl.addEventListener('click', () => {
+  if (passwordEl.textContent) {
+    copyPassword(passwordEl.textContent)
+  } else {
+    colorChange(passwordEl, 'red', 'no text to copy!');  
+  }
+})
+
+function copyPassword(textToCopy) {
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    colorChange(passwordEl, 'lightBlue', 'Password Copied')
+  }).catch(err => {
+    colorChange(passwordEl, 'red', 'failed to copy')    
+  });
 }

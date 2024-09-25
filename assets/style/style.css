@@ -23,7 +23,7 @@ p {
 }
 
 h3 {
-  background: linear-gradient(to top, rgb(80, 80, 80), black);
+  background: linear-gradient(to top, rgb(17, 17, 17), black);
   width: 100%;
   text-align: center;
   color: rgb(255, 255, 255);
@@ -76,12 +76,12 @@ button {
   background: none;
   color: white;
   font-weight: bold;
-  border: rgb(60, 18, 60) solid 1px;
+  border: rgb(35, 10, 35) solid 1px;
   border-radius: 5px;
 }
 
 button:hover {
-  background: linear-gradient(rgb(80, 80, 80), rgb(60, 18, 60));
+  background: linear-gradient(rgb(17, 17, 17), rgb(35, 10, 35));
   border: none;
 }
 
