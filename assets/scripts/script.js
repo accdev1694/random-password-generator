@@ -17,8 +17,7 @@ generateBtnEl.addEventListener("click", function () {
   if (lengthOfPassword()) {
     populateChars();
     generatePassword();
-    colorChange(passwordEl, "lightBlue");
-    passwordEl.textContent = password;
+    colorChange(passwordEl, "lightBlue", password);
   }
 
   clear();
